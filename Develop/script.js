@@ -10,7 +10,7 @@
 4. Generate password
 */
 
-// Assignment Code
+// Assignment Code - Arrays
 let generateBtn = document.querySelector("#generate");
 let lowAlph = [
   "a",
@@ -95,20 +95,6 @@ let hiAlph = [
   "Z",
 ];
 
-// Function that is called once user clicks red button
-// function genLength() {
-//   let pLeng = prompt("Choose a password length between 8 and 128");
-//   console.log("password length is " + pLeng);
-//   if (pLeng < 8 || pLeng > 128) {
-//     alert("You must choose a number that is higher than 8 and less than 128");
-//     console.log(pLeng);
-//   } else if (isNaN(pLeng)) {
-//     alert("You must choose a number > 8 or < 128.");
-//   } else {
-//     alert("Your password length is " + pLeng);
-//   }
-// }
-
 // Function to choose other characters
 function generatePassword() {
   let pLeng = parseInt(prompt("Choose a password length between 8 and 128"));
@@ -134,16 +120,24 @@ function generatePassword() {
       alert("You must make a selection.");
     } else if (pUpper && pLower && spec && num) {
       choices = hiAlph.concat(lowAlph, spec1, numeric);
-      console.log(choices);
     } else if (!pUpper && pLower && spec && num) {
       choices = lowAlph.concat(spec1, numeric);
-      console.log(choices);
     } else if (!pUpper && !pLower && spec && num) {
       choices = spec1.concat(numeric);
-      console.log(choices);
     } else if (!pUpper && !pLower && !spec && num) {
       choices = numeric;
-      console.log(choices);
+    } else if (pUpper && pLower && spec && !num) {
+      choices = hiAlph.concat(lowAlph, spec1);
+    } else if (pUpper && pLower && !spec && !num) {
+      choices = lowAlph.concat(pUpper, numeric);
+    } else if (pUpper && !pLower && !spec && !num) {
+      choices = hiAlph;
+    } else if (pUpper && !pLower && spec && num) {
+      choices = hiAlph.concat(numeric);
+    } else if (!pUpper && pLower && !spec && num) {
+      choices = lowAlph.concat(numeric);
+    } else if (!pUpper && !pLower && spec && !num) {
+      choices = spec1;
     }
   }
 
@@ -162,9 +156,6 @@ function generatePassword() {
 
 // Write password to the #password input
 function writePassword(pwdstring) {
-  // let password = generatePassword();
-  // let passwordText = document.querySelector("#password");
-  // passwordText.value = password;
   document.getElementById("password").textcontent = pwdstring;
 }
 
