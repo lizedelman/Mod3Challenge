@@ -19,13 +19,20 @@ let pUpper;
 let pLow;
 let pSpec;
 
-// Write password to the #password input
-
+//Function that is called once user clicks red button
 function genLength() {
   let pLeng = prompt("Choose a password length between 8 and 128");
   console.log("password length is " + pLeng);
+  if (pLeng <= 8 || pLeng >= 128) {
+    alert("You must choose a number that is higher than 8 and less than 128");
+  } else if (isNaN(pLeng)) {
+    alert("You must choose a number > 8 or < 128.");
+  } else {
+    alert("Your length is " + pLeng);
+  }
 }
 
+// Write password to the #password input
 function writePassword() {
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
