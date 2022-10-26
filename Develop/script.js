@@ -41,7 +41,7 @@ let lowAlph = [
   "z",
 ];
 let numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-let spec = [
+let spec1 = [
   "@",
   "%",
   "+",
@@ -134,18 +134,33 @@ function generatePassword() {
 
     if (!pUpper && !pLower && !spec && !num) {
       alert("You must make a selection.");
-    } else {
-      alert("No uppercase letters will be used.");
+    } else if (pUpper && pLower && spec && num) {
+      choices = hiAlph.concat(lowAlph, spec1, numeric);
+      console.log(choices);
     }
+    //Record the various options of the above choices same as we did above.
   }
+  var empty = [];
+  for (var i = 0; i < pLeng; i++) {
+    var picked = choices[Math.floor(Math.random() * choices.length)];
+    empty.push(picked);
+  }
+  console.log(empty);
+  var pwdstring = empty.join("");
+  writePassword(pwdstring);
+  return pwdstring;
 }
-// Write password to the #password input
-function writePassword() {
-  let password = generatePassword();
-  let passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+// Write password to the #password input
+function writePassword(pwdstring) {
+  // let password = generatePassword();
+  // let passwordText = document.querySelector("#password");
+  // passwordText.value = password;
+  document.getElementById("password").textcontent = pwdstring;
 }
 
 // Add event listener to generate button.
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", function () {
+  pwdstring = generatePassword();
+  document.getElementById("password").placeholder = pwdstring;
+});
