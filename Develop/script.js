@@ -135,16 +135,27 @@ function generatePassword() {
     } else if (pUpper && pLower && spec && num) {
       choices = hiAlph.concat(lowAlph, spec1, numeric);
       console.log(choices);
+    } else if (!pUpper && pLower && spec && num) {
+      choices = lowAlph.concat(spec1, numeric);
+      console.log(choices);
+    } else if (!pUpper && !pLower && spec && num) {
+      choices = spec1.concat(numeric);
+      console.log(choices);
+    } else if (!pUpper && !pLower && !spec && num) {
+      choices = numeric;
+      console.log(choices);
     }
-    //Record the various options of the above choices same as we did above.
   }
-  var empty = [];
-  for (var i = 0; i < pLeng; i++) {
-    var picked = choices[Math.floor(Math.random() * choices.length)];
+
+  let empty = [];
+  for (let i = 0; i < pLeng; i++) {
+    let picked = choices[Math.floor(Math.random() * choices.length)];
     empty.push(picked);
   }
   console.log(empty);
-  var pwdstring = empty.join("");
+
+  //Makes the password a string instead of array
+  let pwdstring = empty.join("");
   writePassword(pwdstring);
   return pwdstring;
 }
