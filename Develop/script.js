@@ -12,11 +12,20 @@
 
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
-var string = "abcdefghijklmnopqrstuvwxyz"; //to upper
-var numeric = "0123456789";
-var punctuation = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
+let string = "abcdefghijklmnopqrstuvwxyz"; //to upper
+let numeric = "0123456789";
+let punctuation = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
+let pUpper;
+let pLow;
+let pSpec;
 
 // Write password to the #password input
+
+function genLength() {
+  let pLeng = prompt("Choose a password length between 8 and 128");
+  console.log("password length is " + pLeng);
+}
+
 function writePassword() {
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
@@ -24,9 +33,12 @@ function writePassword() {
   passwordText.value = password;
 }
 
-// Add event listener to generate button
-// original code: generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button.
+generateBtn.addEventListener("click", genLength);
 
-generateBtn.addEventListener("click", () =>
-  prompt("Choose a password length between 8 and 128")
-);
+//Nico's code
+// generateBtn.addEventListener("click", () =>
+//   prompt("Choose a password length between 8 and 128")
+// );
+
+// confirm("Include lowercase characters in your password?");
