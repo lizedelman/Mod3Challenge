@@ -96,22 +96,20 @@ let hiAlph = [
 ];
 
 // Function that is called once user clicks red button
-// ISSUE: doesn't give user a chance to correct wrong answer. Should I make it simple and leave out those options?
-function genLength() {
-  let pLeng = prompt("Choose a password length between 8 and 128");
-  console.log("password length is " + pLeng);
-  if (pLeng < 8 || pLeng > 128) {
-    alert("You must choose a number that is higher than 8 and less than 128");
-    console.log(pLeng);
-  } else if (isNaN(pLeng)) {
-    alert("You must choose a number > 8 or < 128.");
-  } else {
-    alert("Your password length is " + pLeng);
-  }
-}
+// function genLength() {
+//   let pLeng = prompt("Choose a password length between 8 and 128");
+//   console.log("password length is " + pLeng);
+//   if (pLeng < 8 || pLeng > 128) {
+//     alert("You must choose a number that is higher than 8 and less than 128");
+//     console.log(pLeng);
+//   } else if (isNaN(pLeng)) {
+//     alert("You must choose a number > 8 or < 128.");
+//   } else {
+//     alert("Your password length is " + pLeng);
+//   }
+// }
 
 // Function to choose other characters
-// ISSUE: How to move through to next character options
 function generatePassword() {
   let pLeng = parseInt(prompt("Choose a password length between 8 and 128"));
   console.log("password length is " + pLeng);
