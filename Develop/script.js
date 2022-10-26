@@ -12,26 +12,133 @@
 
 // Assignment Code
 let generateBtn = document.querySelector("#generate");
-let string = "abcdefghijklmnopqrstuvwxyz"; //to upper
-let numeric = "0123456789";
-let punctuation = "!@#$%^&*()_+~`|}{[]:;?><,./-=";
-let pUpper;
-let pLow;
-let pSpec;
+let lowAlph = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+let numeric = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+let spec = [
+  "@",
+  "%",
+  "+",
+  "\\",
+  "/",
+  "'",
+  "!",
+  "#",
+  "$",
+  "^",
+  "?",
+  ":",
+  ",",
+  ")",
+  "(",
+  "}",
+  "{",
+  "]",
+  "[",
+  "~",
+  "-",
+  "_",
+  ".",
+];
+let hiAlph = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
 
-//Function that is called once user clicks red button
+// Function that is called once user clicks red button
+// ISSUE: doesn't give user a chance to correct wrong answer. Should I make it simple and leave out those options?
 function genLength() {
   let pLeng = prompt("Choose a password length between 8 and 128");
   console.log("password length is " + pLeng);
-  if (pLeng <= 8 || pLeng >= 128) {
+  if (pLeng < 8 || pLeng > 128) {
     alert("You must choose a number that is higher than 8 and less than 128");
+    console.log(pLeng);
   } else if (isNaN(pLeng)) {
     alert("You must choose a number > 8 or < 128.");
   } else {
-    alert("Your length is " + pLeng);
+    alert("Your password length is " + pLeng);
   }
 }
 
+// Function to choose other characters
+// ISSUE: How to move through to next character options
+function generatePassword() {
+  let pLeng = parseInt(prompt("Choose a password length between 8 and 128"));
+  console.log("password length is " + pLeng);
+  if (pLeng < 8 || pLeng > 128) {
+    alert("You must choose a number that is higher than 8 and less than 128");
+    console.log(pLeng);
+  } else {
+    let pUpper = confirm(
+      "To include upper case letters in your password click 'ok,' otherwise click 'cancel.'"
+    );
+    let pLower = confirm(
+      "To include lower case letters in your password click 'ok,' otherwise click 'cancel.'"
+    );
+    let spec = confirm(
+      "To include special characters in your password click 'ok,' otherwise click 'cancel.'"
+    );
+    let num = confirm(
+      "To include numbers in your password click 'ok,' otherwise click 'cancel.'"
+    );
+
+    if (!pUpper && !pLower && !spec && !num) {
+      alert("You must make a selection.");
+    } else {
+      alert("No uppercase letters will be used.");
+    }
+  }
+}
 // Write password to the #password input
 function writePassword() {
   let password = generatePassword();
@@ -41,11 +148,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button.
-generateBtn.addEventListener("click", genLength);
-
-//Nico's code
-// generateBtn.addEventListener("click", () =>
-//   prompt("Choose a password length between 8 and 128")
-// );
-
-// confirm("Include lowercase characters in your password?");
+generateBtn.addEventListener("click", writePassword);
