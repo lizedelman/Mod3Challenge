@@ -16,11 +16,12 @@ Psuedo Code:
 
 ## Installation
 
-Uploaded to Github:
+Uploaded to Github: https://github.com/lizedelman/Mod3Challenge
 
 ## Completed Page
 
 Screenshot: assets/PasswordGeneratorScreenshot.jpg
+https://github.com/lizedelman/Mod3Challenge/blob/main/Assets/PasswordGeneratorScreenshot.html
 
 ## Usage
 
